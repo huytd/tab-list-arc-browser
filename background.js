@@ -59,3 +59,7 @@ chrome.tabs.onCreated.addListener(() => {
 chrome.tabs.onMoved.addListener(() => {
   updateTabsList();
 });
+
+chrome.tabs.onActivated.addListener(() => {
+  updateTabsList();
+});

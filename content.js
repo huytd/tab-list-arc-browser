@@ -21,6 +21,9 @@
       let tabTitleLength = tab.title.length;
       let tabTitle = tabTitleLength <= 30 ? tab.title : `${tab.title.substr(0, 30)}...`;
       listItem.textContent = index + ". " + tabTitle;
+      if (tab.active) {
+        listItem.className = "active";
+      }
       listItem.addEventListener('click', () => {
         try {
           chrome.runtime.sendMessage({ action: 'navigateToTab', tabId: tab.id }, (response) => {
@@ -56,7 +59,7 @@
   }
 
   fetchTabs();
-  setInterval(fetchTabs, 1000);
+  setInterval(fetchTabs, 500);
 
   document.addEventListener('keydown', (event) => {
     if (event.metaKey && event.key >= '1' && event.key <= '9') {
