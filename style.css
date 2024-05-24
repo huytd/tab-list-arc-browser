@@ -1,0 +1,48 @@
+:root {
+  --tablist-container-font-size: 12px;
+}
+
+#tab-list-container {
+  font-family: monospace !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;  /* Adjust the height as needed */
+  background: #222222;
+  border-bottom: 1px solid #383838;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: var(--tablist-container-font-size);
+}
+
+#tab-list-container ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 1px;
+  overflow-x: auto;
+}
+
+#tab-list-container li {
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 2px 8px;
+  background: #333333;
+  color: #aaaaaa;
+  border-radius: 3px;
+  transition: background 0.3s;
+}
+
+#tab-list-container li:hover {
+  background: #444;
+}
+
+#tab-list-container li.active {
+  font-weight: bold;
+  color: $ffffff;
+}

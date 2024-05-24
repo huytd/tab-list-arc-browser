@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Tab List Display",
+  "version": "1.0",
+  "description": "Displays a list of open tabs.",
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["style.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon_16x16.png",
+      "48": "images/icon_32x32.png",
+      "128": "images/icon_128x128.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon_16x16.png",
+    "48": "images/icon_32x32.png",
+    "128": "images/icon_128x128.png"
+  }
+}
