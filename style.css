@@ -1,5 +1,22 @@
 :root {
   --tablist-container-font-size: 12px;
+  --tablist-container-background: #222222;
+  --tablist-container-border: #a8a8a8;
+  --tablist-container-tab-background: #333333;
+  --tablist-container-tab-foreground: #aaaaaa;
+  --tablist-container-tab-hover-background: #424242;
+  --tablist-container-tab-active-background: #333333;
+  --tablist-container-tab-active-foreground: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  --tablist-container-background: #222222;
+  --tablist-container-border: #646464;
+  --tablist-container-tab-background: #333333;
+  --tablist-container-tab-foreground: #aaaaaa;
+  --tablist-container-tab-hover-background: #424242;
+  --tablist-container-tab-active-background: #333333;
+  --tablist-container-tab-active-foreground: #ffffff;
 }
 
 #tab-list-container {
@@ -8,13 +25,12 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 30px;  /* Adjust the height as needed */
-  background: #222222;
-  border-bottom: 1px solid #383838;
+  height: 32px; /* Adjust the height as needed */
+  background: var(--tablist-container-background);
+  border-bottom: 1px solid var(--tablist-container-border);
   z-index: 9999;
   display: flex;
   align-items: center;
-  padding: 8px;
   box-sizing: border-box;
   font-size: var(--tablist-container-font-size);
 }
@@ -24,25 +40,33 @@
   padding: 0;
   list-style: none;
   display: flex;
-  gap: 1px;
+  align-items: center;
+  gap: 3px;
   overflow-x: auto;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 #tab-list-container li {
   cursor: pointer;
   white-space: nowrap;
-  padding: 2px 8px;
-  background: #333333;
-  color: #aaaaaa;
+  background: var(--tablist-container-tab-background);
+  color: var(--tablist-container-tab-foreground);
   border-radius: 3px;
   transition: background 0.3s;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 12px;
 }
 
 #tab-list-container li:hover {
-  background: #444;
+  background: var(--tablist-container-tab-hover-background);
 }
 
 #tab-list-container li.active {
-  font-weight: bold;
-  color: #ffffff;
+  /* font-weight: bold; */
+  background: var(--tablist-container-tab-active-background);
+  color: var(--tablist-container-tab-active-foreground);
 }

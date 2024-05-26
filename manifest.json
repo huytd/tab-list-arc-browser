@@ -3,11 +3,7 @@
   "name": "Tab List Display",
   "version": "1.0",
   "description": "Displays a list of open tabs.",
-  "permissions": [
-    "tabs",
-    "activeTab",
-    "storage"
-  ],
+  "permissions": ["tabs", "activeTab", "storage", "scripting"],
   "background": {
     "service_worker": "background.js"
   },
