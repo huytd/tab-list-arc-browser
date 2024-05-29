@@ -19,8 +19,13 @@
     --tablist-container-tab-active-foreground: #ffffff;
 }
 
-#tab-list-container {
+#tab-list-container,
+#tab-list-container * {
     font-family: monospace !important;
+    font-size: var(--tablist-container-font-size);
+}
+
+#tab-list-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -32,7 +37,6 @@
     display: flex;
     align-items: center;
     box-sizing: border-box;
-    font-size: var(--tablist-container-font-size);
     transition: all 0.5s;
 }
 

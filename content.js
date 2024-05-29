@@ -1,8 +1,21 @@
 (function () {
   const container = document.createElement("div");
   container.id = "tab-list-container";
-  container.className = "hidden";
   document.body.prepend(container);
+
+  document.body.style.paddingTop = "32px";
+
+  const fixedElements = document.querySelectorAll("*");
+  fixedElements.forEach((el) => {
+    if (el.id === "tab-list-container") return;
+    const computedStyle = window.getComputedStyle(el);
+    if (computedStyle.position === "fixed") {
+      const top = parseInt(computedStyle.top, 10);
+      if (!isNaN(top)) {
+        el.style.top = `${top + 32}px`;
+      }
+    }
+  });
 
   async function updateTabList(tabs) {
     if (chrome.runtime.lastError) {
@@ -64,16 +77,7 @@
 
   fetchTabs();
 
-  document.addEventListener("keyup", (event) => {
-    if (event.key === "Meta") {
-      container.className = "hidden";
-    }
-  });
-
   document.addEventListener("keydown", (event) => {
-    if (event.metaKey) {
-      container.className = "";
-    }
     if (event.metaKey && event.key >= "1" && event.key <= "9") {
       const tabIndex = event.key === "9" ? -1 : parseInt(event.key, 10) - 1;
       chrome.runtime.sendMessage({ action: "switchToTab", tabIndex }, () => {
