@@ -7,6 +7,7 @@
 #tab-list-container.dark {
     --tablist-container-background: #222222;
     --tablist-container-border: #323232;
+    --tablist-container-tab-border-color: #323232;
     --tablist-container-tab-background: #333333;
     --tablist-container-tab-foreground: #aaaaaa;
     --tablist-container-tab-hover-background: #424242;
@@ -15,13 +16,15 @@
 }
 
 #tab-list-container.light {
-    --tablist-container-background: #f8f8f8;
-    --tablist-container-border: #efefef;
+    --tablist-container-background: #f6f8fa;
+    --tablist-container-border: #e2e7eb;
     --tablist-container-tab-background: #eaeaea;
     --tablist-container-tab-foreground: #7e7e7e;
     --tablist-container-tab-hover-background: #dfdfdf;
-    --tablist-container-tab-active-background: #dfdfdf;
+    --tablist-container-tab-active-background: #ffffff;
     --tablist-container-tab-active-foreground: #1a1a1a;
+    --tablist-container-tab-border-color: #f6f8fa;
+    --tablist-container-tab-active-border-color: #d0d7de;
 }
 
 #tab-list-container,
@@ -44,6 +47,7 @@
     justify-content: start;
     box-sizing: border-box;
     transition: all 0.5s;
+    overflow: hidden;
 }
 
 #tab-list-container ul {
@@ -58,6 +62,14 @@
     overflow-x: auto;
     padding-left: 3px;
     padding-right: 3px;
+    box-sizing: content-box;
+}
+
+#tab-list-container li::before,
+#tab-list-container li::after {
+    content: none;
+    margin: 0;
+    padding: 0;
 }
 
 #tab-list-container li {
@@ -67,12 +79,14 @@
     background: var(--tablist-container-tab-background);
     color: var(--tablist-container-tab-foreground);
     border-radius: var(--tablist-tab-border-radius);
+    border: 1px solid var(--tablist-container-tab-border-color);
     transition: background 0.3s;
-    height: 24px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 2px 12px;
+    box-sizing: content-box;
 }
 
 #tab-list-container li:hover {
@@ -83,4 +97,5 @@
     font-weight: bold;
     background: var(--tablist-container-tab-active-background);
     color: var(--tablist-container-tab-active-foreground);
+    border: 1px solid var(--tablist-container-tab-active-border-color);
 }
