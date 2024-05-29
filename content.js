@@ -13,25 +13,27 @@
   container.className = isDarkTheme ? "dark" : "light";
   document.body.prepend(container);
 
-  document.body.style.paddingTop = `${tabListHeight}px`;
+  document.body.onload = () => {
+    document.body.style.paddingTop = `${tabListHeight}px`;
 
-  const fixedElements = document.querySelectorAll("*");
-  fixedElements.forEach((el) => {
-    if (el.id === "tab-list-container") return;
-    const computedStyle = window.getComputedStyle(el);
-    const top = parseInt(computedStyle.top, 10);
-    if (isNaN(top)) {
-      return;
-    }
-    if (computedStyle.position === "fixed") {
-      el.style.top = `${top + tabListHeight}px`;
-    }
-    if (computedStyle.position === "sticky") {
-      if (top === 0) {
-        el.style.top = `${tabListHeight}px`;
+    const fixedElements = document.querySelectorAll("*");
+    fixedElements.forEach((el) => {
+      if (el.id === "tab-list-container") return;
+      const computedStyle = window.getComputedStyle(el);
+      const top = parseInt(computedStyle.top, 10);
+      if (isNaN(top)) {
+        return;
       }
-    }
-  });
+      if (computedStyle.position === "fixed") {
+        el.style.top = `${top + tabListHeight}px`;
+      }
+      if (computedStyle.position === "sticky") {
+        if (top === 0) {
+          el.style.top = `${tabListHeight}px`;
+        }
+      }
+    });
+  };
 
   async function updateTabList(tabs) {
     if (chrome.runtime.lastError) {

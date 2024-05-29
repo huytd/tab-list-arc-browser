@@ -1,6 +1,7 @@
 :root {
     --tablist-container-font-size: 12px;
     --tablist-tab-border-radius: 6px;
+    --tablist-container-height: 32px;
 }
 
 #tab-list-container.dark {
@@ -52,7 +53,7 @@
     display: flex;
     align-items: center;
     justify-content: start;
-    height: 32px;
+    height: var(--tablist-container-height);
     gap: 3px;
     overflow-x: auto;
     padding-left: 3px;
@@ -60,6 +61,7 @@
 }
 
 #tab-list-container li {
+    margin: 0;
     cursor: pointer;
     white-space: nowrap;
     background: var(--tablist-container-tab-background);
@@ -81,8 +83,4 @@
     font-weight: bold;
     background: var(--tablist-container-tab-active-background);
     color: var(--tablist-container-tab-active-foreground);
-}
-
-#tab-list-container.hidden {
-    top: -32px;
 }
