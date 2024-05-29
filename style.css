@@ -1,6 +1,6 @@
 :root {
     --tablist-container-font-size: 12px;
-    --tablist-tab-border-radius: 6px;
+    --tablist-tab-border-radius: 4px;
     --tablist-container-height: 32px;
 }
 
@@ -17,10 +17,10 @@
 #tab-list-container.light {
     --tablist-container-background: #f8f8f8;
     --tablist-container-border: #efefef;
-    --tablist-container-tab-background: #d8d8d8;
-    --tablist-container-tab-foreground: #5a5a5a;
-    --tablist-container-tab-hover-background: #d8d8d8;
-    --tablist-container-tab-active-background: #d4d4d4;
+    --tablist-container-tab-background: #eaeaea;
+    --tablist-container-tab-foreground: #7e7e7e;
+    --tablist-container-tab-hover-background: #dfdfdf;
+    --tablist-container-tab-active-background: #dfdfdf;
     --tablist-container-tab-active-foreground: #1a1a1a;
 }
 
