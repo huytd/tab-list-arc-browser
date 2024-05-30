@@ -31,7 +31,6 @@
   }
   document.body.prepend(container);
 
-  console.log("AUTO HIDE? ", isAutoHide);
   if (!isAutoHide) {
     document.body.style.paddingTop = `${tabListHeight}px`;
 
