@@ -31,9 +31,8 @@
   }
   document.body.prepend(container);
 
-  document.body.onload = () => {
-    if (isAutoHide) return;
-
+  console.log("AUTO HIDE? ", isAutoHide);
+  if (!isAutoHide) {
     document.body.style.paddingTop = `${tabListHeight}px`;
 
     const fixedElements = document.querySelectorAll("*");
@@ -53,7 +52,7 @@
         }
       }
     });
-  };
+  }
 
   async function updateTabList(tabs) {
     if (chrome.runtime.lastError) {
