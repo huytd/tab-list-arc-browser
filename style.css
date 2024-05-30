@@ -46,7 +46,7 @@
     align-items: center;
     justify-content: start;
     box-sizing: border-box;
-    transition: all 0.5s;
+    transition: all 0.1s;
     overflow: hidden;
 }
 
@@ -80,7 +80,7 @@
     color: var(--tablist-container-tab-foreground);
     border-radius: var(--tablist-tab-border-radius);
     border: 1px solid var(--tablist-container-tab-border-color);
-    transition: background 0.3s;
+    transition: background 0.1s;
     height: 20px;
     display: flex;
     align-items: center;
