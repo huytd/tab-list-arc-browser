@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Options</title>
+    </head>
+    <body>
+        <p>Configure your extension settings here.</p>
+        <form id="options-form">
+            <fieldset>
+                <legend>Theme:</legend>
+                <input
+                    type="radio"
+                    id="themeLight"
+                    name="theme"
+                    value="light"
+                />
+                <label for="themeLight">Light</label>
+                <br />
+                <input type="radio" id="themeDark" name="theme" value="dark" />
+                <label for="themeDark">Dark</label>
+                <br />
+                <input
+                    type="radio"
+                    id="themeSystem"
+                    name="theme"
+                    value="system"
+                />
+                <label for="themeSystem">System</label>
+            </fieldset>
+            <br />
+            <fieldset>
+                <input type="checkbox" id="autoHideMode" name="autoHideMode" />
+                <label for="autoHideMode">Auto hide mode</label>
+                <br />
+                <div>
+                    When enabled, the tab list will be hidden, and only show up
+                    when you hold the Cmd key
+                </div>
+            </fieldset>
+            <br />
+            <button type="submit">Save Options</button>
+        </form>
+        <script src="options.js"></script>
+    </body>
+</html>

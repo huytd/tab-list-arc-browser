@@ -99,3 +99,7 @@
     color: var(--tablist-container-tab-active-foreground);
     border: 1px solid var(--tablist-container-tab-active-border-color);
 }
+
+#tab-list-container[data-hidden] {
+    top: calc(-1 * var(--tablist-container-height));
+}

@@ -1,16 +1,34 @@
-(function () {
+(async function () {
+  const options = await chrome.storage.sync.get();
+  const configuredTheme = options.theme ?? "system";
+  const isAutoHide = options.autoHideMode || false;
+
   const tabListHeight = 32;
   const matchMedia = window.matchMedia("(prefers-color-scheme: dark)");
-  const isDarkTheme = matchMedia?.matches ? true : false;
+  const isDarkTheme = (() => {
+    switch (configuredTheme) {
+      case "light":
+        return false;
+      case "dark":
+        return true;
+      default:
+        return matchMedia?.matches ? true : false;
+    }
+  })();
 
-  matchMedia.addEventListener("change", (e) => {
-    const isDarkTheme = matchMedia?.matches ? true : false;
-    container.className = isDarkTheme ? "dark" : "light";
-  });
+  if (configuredTheme === "system") {
+    matchMedia.addEventListener("change", (e) => {
+      const isDarkTheme = matchMedia?.matches ? true : false;
+      container.className = isDarkTheme ? "dark" : "light";
+    });
+  }
 
   const container = document.createElement("div");
   container.id = "tab-list-container";
   container.className = isDarkTheme ? "dark" : "light";
+  if (isAutoHide) {
+    container.setAttribute("data-hidden", true);
+  }
   document.body.prepend(container);
 
   document.body.onload = () => {
@@ -95,7 +113,18 @@
 
   fetchTabs();
 
+  if (isAutoHide) {
+    document.addEventListener("keyup", (event) => {
+      if (event.key === "Meta") {
+        container.setAttribute("data-hidden", true);
+      }
+    });
+  }
+
   document.addEventListener("keydown", (event) => {
+    if (event.metaKey && isAutoHide) {
+      container.removeAttribute("data-hidden");
+    }
     if (event.metaKey && event.key >= "1" && event.key <= "9") {
       const tabIndex = event.key === "9" ? -1 : parseInt(event.key, 10) - 1;
       chrome.runtime.sendMessage({ action: "switchToTab", tabIndex }, () => {
