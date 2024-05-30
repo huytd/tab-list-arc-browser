@@ -32,7 +32,7 @@
   document.body.prepend(container);
 
   document.body.onload = () => {
-    if (!isAutoHide) return;
+    if (isAutoHide) return;
 
     document.body.style.paddingTop = `${tabListHeight}px`;
 
