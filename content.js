@@ -123,7 +123,7 @@
 
   document.addEventListener("keydown", (event) => {
     if (event.metaKey && isAutoHide) {
-      container.removeAttribute("data-hidden");
+      chrome.runtime.sendMessage({ action: "showTabList" });
     }
     if (event.metaKey && event.key >= "1" && event.key <= "9") {
       const tabIndex = event.key === "9" ? -1 : parseInt(event.key, 10) - 1;
@@ -136,6 +136,9 @@
   chrome.runtime.onMessage.addListener((message) => {
     if (message.messageType === "update") {
       fetchTabs();
+    }
+    if (message.messageType === "showTabList") {
+      container.removeAttribute("data-hidden");
     }
   });
 })();

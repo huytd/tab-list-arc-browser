@@ -1,5 +1,11 @@
 chrome.runtime.onMessage.addListener(async (request, sender, sendResponse) => {
-  if (request.action === "navigateToTab") {
+  if (request.action === "showTabList") {
+    chrome.tabs.query({}, (tabs) => {
+      tabs.forEach((tab) => {
+        chrome.tabs.sendMessage(tab.id, { messageType: "showTabList" });
+      });
+    });
+  } else if (request.action === "navigateToTab") {
     try {
       chrome.tabs.update(request.tabId, { active: true }, () => {
         if (chrome.runtime.lastError) {
@@ -36,7 +42,6 @@ function updateTabsList() {
           console.error(chrome.runtime.lastError);
         }
         tabs.forEach((tab) => {
-          console.log("MSG TAB", tab);
           chrome.tabs.sendMessage(tab.id, { messageType: "update" });
         });
       });
