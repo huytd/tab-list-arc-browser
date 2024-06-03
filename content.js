@@ -130,6 +130,7 @@
       chrome.runtime.sendMessage({ action: "switchToTab", tabIndex }, () => {
         document.querySelector(`[data-tabid=${tab.id}]`).scrollIntoView();
       });
+      event.preventDefault();
     }
   });
 
