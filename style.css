@@ -38,7 +38,7 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 32px; /* Adjust the height as needed */
+    height: 32px;
     background: var(--tablist-container-background);
     border-bottom: 1px solid var(--tablist-container-border);
     z-index: 9999;
@@ -47,7 +47,7 @@
     justify-content: start;
     box-sizing: border-box;
     transition: all 0.1s;
-    overflow: hidden;
+    overflow: hidden; /* Hide the scrollbars */
 }
 
 #tab-list-container ul {
@@ -59,10 +59,15 @@
     justify-content: start;
     height: var(--tablist-container-height);
     gap: 3px;
-    overflow-x: auto;
+    overflow-x: auto; /* Allow horizontal scrolling */
+    -webkit-overflow-scrolling: touch;
     padding-left: 3px;
     padding-right: 3px;
     box-sizing: content-box;
+}
+
+#tab-list-container ul::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar */
 }
 
 #tab-list-container li::before,
