@@ -31,6 +31,9 @@
 #tab-list-container * {
     font-family: monospace !important;
     font-size: var(--tablist-container-font-size);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #tab-list-container {
